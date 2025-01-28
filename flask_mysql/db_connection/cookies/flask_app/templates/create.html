@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <title>Cookies</title>
+    <title>Create Order</title>
+</head>
+<body>
+    <a href="/cookies" >Back to purchases</a>
+    <h2>Log a New Order</h2>
+
+    <form action="/cookies/create_order"  method = 'post'>
+        <div class="d-flex>
+
+            <label for="costumer_name">Name : </label>
+            <input type="text" name="costumer_name" id="">
+
+            <label for="cookie_type"> Cookie Type :</label>
+            <input type="text" name="cookie_type" id="">
+
+            <label for="num_of_boxes">Number of Boxes :</label>
+            <input type="number" name="num_of_boxes" min="0" value="0">
+
+            <input type="submit" value="Create" class="btn btn-primary">
+        </div>
+    </form>
+
+    {% with messages = get_flashed_messages() %}     
+        {% if messages %}                            
+            {% for message in messages %}            
+                <p class="text-danger">{{message}}</p>                   
+            {% endfor %}
+        {% endif %}
+    {% endwith %}   
+</body>
+</html>

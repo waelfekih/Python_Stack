@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="d-flex gap-3">
+        <h4>Coding Dojo Wall</h4>
+        <p>Welcome {{user.first_name}} </p>
+        <a href="/logout" class="btn btn-danger">Log Out</a>
+    </header>
+    <hr>
+    <p>What's on your mind ? Create a new post :</p>
+
+    <form action="/comment" method="post">
+        <textarea name="comment" id="" cols="70" rows="5"></textarea>
+        <input type="hidden" name="user_id" value="{{user.id}}">
+        <input type="submit" value="Publish" class="btn-primary">
+    </form>
+
+<hr>
+
+<div>
+    <h4>All Community Posts</h4>
+
+        {% for post in posts: %}
+        <p><em>{{post.user.first_name}} says - {{post.created_at.strftime("%b %d")}}:</em></p>
+        <p>{{post.content}}</p>
+        {% if post.user.id == user.id: %}
+        <a href="/posts/delete/{{post.id}}" class="btn btn-danger">delete</a>
+        {% endif %}
+        <hr>
+        {% endfor %}
+
+    </div>
+
+
+    </div>
+</div>
+</html>

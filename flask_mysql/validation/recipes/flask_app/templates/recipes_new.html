@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'recipes.css' )}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'bootstrap.css' )}}">
+
+    <title>Recipe Share</title>
+</head>
+<body>
+    <header class="container d-flex align-items-center justify-content-between ">
+        <h5>Add a New Recipe</h5>
+        <div>
+            <a href="/recipes" class="btn btn-primary">Back to Recipes</a>
+            <a href="/logout" class="btn btn-danger">Log Out</a>
+        </div>
+        
+    </header>
+    <hr>
+    <main>
+        <div class="container d-flex gap-3">  
+            
+            <form action="/recipes/new" method="post" >
+                <input type="hidden" name="users_id" value="{{users_id}}">
+                <div class="w-50">
+                    <div>
+                        <label for="name">Name :</label>
+                        <input type="text" name="name" id="">
+                        {% with messages = get_flashed_messages(category_filter=["name"]) %}     
+                        {% if messages %}                            
+                            {% for message in messages %}            
+                                <p class="text-danger">{{message}}</p>                   
+                            {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div>
+                        <label for="description">Description :</label>
+                        <textarea name="description" id="" cols="30" rows="5"></textarea>
+                        {% with messages = get_flashed_messages(category_filter=["description"]) %}     
+                        {% if messages %}                            
+                            {% for message in messages %}            
+                                <p class="text-danger">{{message}}</p>                   
+                            {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div>
+                        <label for="instructions">Instructions :</label>
+                        <textarea name="instructions" id="" cols="30" rows="5"></textarea>
+                        {% with messages = get_flashed_messages(category_filter=["instructions"]) %}     
+                        {% if messages %}                            
+                            {% for message in messages %}            
+                                <p class="text-danger">{{message}}</p>                   
+                            {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class=" d-flex justify-content-end align-items-end ">
+                    <div>
+                        <label for="date_made">Date cooked / made ? :</label>
+                        <input type="date" name="date_made" id=""> 
+                        {% with messages = get_flashed_messages(category_filter=["date_made"]) %}     
+                        {% if messages %}                            
+                            {% for message in messages %}            
+                                <p class="text-danger">{{message}}</p>                   
+                            {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div>
+                        <label for="under" class="m-lg-3">Under 30 minutes ?</label>
+                        <label for="yes">Yes</label>
+                        <input type="radio"  name="under" id="Yes" value="1">
+                        <label for="no">No</label>
+                        <input type="radio" name="under" id="No" value="0">
+                        {% with messages = get_flashed_messages(category_filter=["under"]) %}     
+                        {% if messages %}                            
+                            {% for message in messages %}            
+                                <p class="text-danger">{{message}}</p>                   
+                            {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-primary m-lg-2">
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

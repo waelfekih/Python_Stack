@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Cookie</title>
+</head>
+<body>
+    <a href="/cookies">Back to purchases</a>
+    <h3>Change Order </h3>
+
+    <form action="/cookies/edit/<int:id>"> 
+        <div class="d-flex>
+
+            <label for="costumer_name">Name : </label>
+            <input type="text" name="costumer_name" id="">
+
+            <label for="cookie_type"> Cookie Type :</label>
+            <input type="text" name="cookie_type" id="">
+
+            <label for="num_of_boxes">Number of Boxes :</label>
+            <input type="number" name="num_of_boxes" min="0" value="0">
+
+            <input type="submit" value="Create" class="btn btn-primary">
+        </div>
+    </form>
+
+    {% with messages = get_flashed_messages() %}     
+        {% if messages %}                            
+            {% for message in messages %}            
+                <p class="text-danger">{{message}}</p>                   
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    </form>
+    
+</body>
+</html>

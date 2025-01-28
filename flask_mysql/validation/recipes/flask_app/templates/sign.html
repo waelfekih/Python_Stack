@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'recipes.css' )}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'bootstrap.css' )}}">
+
+    <title>Recipe share</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Share</h1>
+
+    </div>
+    <hr>
+    <div class="container d-flex gap-3">
+        
+            
+            <form action="/register" method="post" class="w-50">
+                <h2>Register</h2>
+
+                <div class="mb-3">
+                <label for="first_name">First Name :</label>
+                <input type="text" name="first_name" id="">
+                </div>
+                <div class="mb-3">
+                <label for="last_name">Last Name :</label>
+                <input type="text" name="last_name" id="">
+                </div>
+                <div class="mb-3">
+                <label for="email">Email :</label>
+                <input type="email" name="email" id="">
+                </div>
+                <div class="mb-3">
+                <label for="password">Password : </label>
+                <input type="password" name="password" id="">
+                </div>
+                <div class="mb-3">
+                <label for="confirm_password" >Confirm Password : </label>
+                <input type="password" name="confirm_password" id="">
+                </div>
+                <input type="submit" value="Register" class="btn btn-primary mt-3">
+            </form>
+            
+        
+
+        <div>
+
+            <form action="/login" method="post" class="w-50">
+                <h2>Login</h2>
+
+                <div class="mb-3">
+                    <label for="email">Email :</label>
+                    <input type="email" name="email" id="">
+                </div>
+                <div class="mb-3">
+                    <label for="password">Password : </label>
+                    <input type="password" name="password" id="">
+                </div>
+                        
+                <input type="submit" value="Login" class="btn btn-primary mt-3">
+            </form>
+            
+        </div>
+        
+    </div>
+    {% with messages = get_flashed_messages() %}     
+                {% if messages %}                            
+                    {% for message in messages %}            
+                        <p class="text-danger">{{message}}</p>                   
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h2>Create Author</h2>
+            <div>
+                <form action="users/create" method="post">  
+                    <label for="name">Name :</label>
+
+                    <input type="text" name="name" id="">
+                    <input type="submit" value="Create">
+                </form>
+            </div>
+            
+        </div>
+
+        <div>
+            <h2>All Authors</h2>
+            <div>
+                {% for u in all_users %}
+                   <a href="/authors/{{u.id}}">{{u.name}}</a> 
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <a href="/books">Add book</a>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Title : {{book.title}}</h2>
+        <p>favorited by : </p>
+        {{% for author in book.author_who_favorited %}}
+        {{author.name}}
+        {% endfor %}
+    </div>
+
+    <div>
+        <form action="/join/author" method="post">
+            <h3>Book's Favorites</h3>
+            <input type="hidden" name="book_id" value="{{book.id}}">
+
+            <div>
+                <label for="author_id">Book : </label>
+                <select name="author_id" id="">
+                    {% for author in unfavorited_authors %}
+                    <option value="{{author.id}}">{{author.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input type="submit" value="Add book">
+        </form>
+    </div>
+</body>
+</html>

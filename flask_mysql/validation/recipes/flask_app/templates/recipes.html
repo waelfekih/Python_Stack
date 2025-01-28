@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'recipes.css' )}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'bootstrap.css' )}}">
+
+    <title>Recipe Share</title>
+</head>
+<body>
+    <header class="container d-flex align-items-center justify-content-between">
+        <h1>Welcome, {{logged_user.first_name}}</h1>
+
+        <a href="/logout" class="btn btn-danger">Log Out</a>
+
+    </header>
+    <hr>
+    <main class="container">
+        <div class="row d-flex">
+            <h5>All posted Recipes :</h5>
+            <a href="/recipes/new" class="btn btn-success w-25 mb-3 mt-1 ">+ Create New Recipe</a>
+
+
+        </div>
+        <table class="table-bordered w-100" >
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Under</th>
+                    <th>Posted By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in recipes%}
+                    <tr>
+                        <td>{{recipe.name}}</td>
+                        <td>{{recipe.under}}</td>
+                        <td>{{recipe.user.first_name}}</td>
+                        <td>
+                            <a href="/recipes/{{recipe.id}}" class="btn btn-info">Show</a>
+                            {% if logged_user.id == recipe.user.id %}
+                                <a href="/recipes/{{recipe.id}}/edit" class="btn btn-secondary">Edit</a>
+                                <a href="/recipes/{{recipe.id}}/delete" class="btn btn-danger">Delete</a>
+                            {% endif %}
+                            
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./flask_app/models",
+        "./flask_app"
+    ]
+}

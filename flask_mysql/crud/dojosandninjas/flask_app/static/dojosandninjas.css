@@ -1,0 +1,7 @@
+.dojos {
+   background-color: gray; 
+}
+
+.alldojos {
+    display: flex;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'recipes.css' )}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename= 'bootstrap.css' )}}">
+
+    <title>Recipe Share</title>
+</head>
+<body>
+<header class="container d-flex align-items-center justify-content-between">
+    <h3>{{logged_user.first_name}} {{logged_user.last_name}}</h3>
+    <h5>{{recipe.name}}</h5>
+    <div>
+        <a href="/recipes" class="btn btn-primary">Back to Recipes</a>
+        <a href="/logout" class="btn btn-danger">Log Out</a>
+    </div>
+</header>
+<hr>
+<main>
+    <div class="mt-4 ">
+        <p><b>Description :</b>{{recipe.description}}</p>
+        <p><b>Under 30 minutes :</b> {{recipe.under}}</p>
+        <p><b>Instructions :</b> {{recipe.instructions}}</p>
+        <p><b>Date Made :</b> {{recipe.date_made}} </p>
+    </div>
+    
+</main>
+</body>
+</html>

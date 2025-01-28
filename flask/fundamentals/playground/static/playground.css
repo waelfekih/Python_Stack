@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+}
+
+.maindiv {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}
